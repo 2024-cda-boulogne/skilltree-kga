@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.image-bordure {
+  background-image: url("./img/image-removebg-preview_2.png");
+  background-size: cover; /* Pour éviter la répétition et couvrir toute la surface de la div */
+  background-position: center; /* Pour centrer l'image horizontalement et verticalement */
+  height: 236px;
+  width: 236px;
+  display: flex; /* Pour aligner l'image au centre de la div */
+  justify-content: center; /* Pour centrer horizontalement */
+  align-items: center; /* Pour centrer verticalement */
+}
+.photo {
+  z-index: -10;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.photo img {
+  border-radius: 55%;
+  width: 80%;
+  height: 80%;
+}
