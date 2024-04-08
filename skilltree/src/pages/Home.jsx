@@ -5,15 +5,24 @@ import '../Home.css';
 function Home() {
   return (
     <div>
-      <div className='main-window window-color'>
-        
-      </div>
-      <div className='hour-window window-color'>
-        Fin de Formation : <br/>
-        Apprenants : 12
-      </div>
-      <div className='area-window window-color'>
-        Boulogne-sur-Mer
+      <div>
+        <div className='showskill-window'>
+          <div className='skill-window'>
+            <p className='text-black'>Développer une application sécurisée</p>
+          </div>
+          <div className='skill-window'>
+            <p className='text-black'>Concevoir et développer une application sécurisée organisée en couches</p>
+          </div>
+          <div className='skill-window'>
+            <p className='text-black'>Préparer le déploiement d’une application sécurisée</p>
+          </div>
+        </div>
+        <div className='name-window'>
+          <p className='text-white'>NOM</p>
+        </div>
+        <div className='more-window'>
+          <p className='text-yellow'>VOIR +</p>
+        </div>
       </div>
     </div>
   );
