@@ -1,0 +1,62 @@
+body{
+    background-color: black;
+    color: white;
+}
+#List{
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+}
+.REACList{
+    display: flex;
+    width: 50vw;
+    height: 5vh;
+    align-items: center;
+    border-radius: 6px;
+    border: #C0C0C0 2px solid;
+}
+.REACNumber{
+    width: 3.5vw;
+    text-align: center;
+    font-size: 30px;
+}
+.REACName{
+    width: 39vw;
+    padding-left:1vw ;
+    text-align: start;
+    font-size: 20px;
+}
+.Line{
+    border: #C0C0C0 1px solid;
+    height: 5vh;
+}
+.REACIMG{
+    height: 4.5vh;
+    padding-left: 2.25vw;
+}
+#FlexDetails{
+    display: flex;
+    flex-direction: row;
+    gap: 5vw;
+    padding-top: 10vh;
+    justify-content: center;
+
+}
+#Card{
+    display: flex;
+    flex-direction: column;
+    border-radius: 50px;
+    border: #C0C0C0 2px solid;
+    width: 25vw;
+    text-align: center;
+}
+.CardIMG{
+    height: 25vh;
+    width: 25vh;
+    border-radius: 50%;
+    object-position: 50% 50%;
+    margin-left: auto;
+    margin-top: 2vh;
+    object-fit: cover;
+    margin-right: auto;
+}
