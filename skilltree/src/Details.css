@@ -60,3 +60,15 @@ body{
     object-fit: cover;
     margin-right: auto;
 }
+audio{
+    display: none;
+}
+
+.image-bordure:hover{
+    transform:  rotate(360deg);
+    transition: 5s;
+    z-index: 10;
+}
+.photo{
+    z-index: -10;
+}
