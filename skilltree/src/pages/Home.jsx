@@ -56,7 +56,7 @@ function Home() {
     <div>
       <div className='dflexresize'>
         {data.map((Learner, index) => (
-          <div key={Learner.id} onClick={() => toggleAudio(index)}>           
+          <div key={Learner.id} onClick={() => toggleAudio(index)} className='reglageimg'>           
             <img src={Learner.url} alt="" className='photomg' />
           </div>
         ))}
