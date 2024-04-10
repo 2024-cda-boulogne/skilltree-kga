@@ -26,12 +26,8 @@ function Home() {
     <div>
       <div className='dflexresize'>
         {data.map((Learner) => (
-          <div key={Learner.id}>
-                <div className="image-bordure">
-                  <div className='photo'> 
-                    <img src={Learner.url} alt="" className='photomg' />
-                  </div>
-                </div>
+          <div key={Learner.id}>                  
+            <img src={Learner.url} alt="" className='photomg' />
           </div>
         ))}
       </div>
