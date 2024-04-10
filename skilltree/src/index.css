@@ -13,6 +13,7 @@
   justify-content: center; /* Pour centrer horizontalement */
   align-items: center; /* Pour centrer verticalement */
 }
+
 .photo {
   z-index: -10;
   display: flex;
@@ -21,14 +22,17 @@
   align-items: center;
   justify-content: center;
 }
+
 .photo img {
-  border-radius: 55%;
-  width: 80%;
-  height: 80%;
+  border-radius: 50%; /* Pour une bordure arrondie */
+  width: 90%; /* Changement de la taille de l'image */
+  height: 90%; /* Changement de la taille de l'image */
 }
+
 .dflexresize {
   align-items: center;
   justify-content: center;
+  background-color: rgba(255, 255, 255, 0.516);
   left: 0px;
   top: 0px;
   position: absolute;
