@@ -56,19 +56,8 @@ function Home() {
     <div>
       <div className='dflexresize'>
         {data.map((Learner, index) => (
-          <div key={Learner.id} onClick={() => toggleAudio(index)}>
-                <div className="image-bordure">
-                  <div className='photo'> 
-                    <img src={Learner.url} alt="" className='photomg' />
-                  </div>
-                </div>
-                {/* Vérifier si cette div est actuellement sélectionnée */}
-                {selectedDivIndex === index && (
-                  <audio controls autoPlay>
-                    <source src={musicUrls[index]} type="audio/mp3" />
-                    Your browser does not support the audio element.
-                  </audio>
-                )}
+          <div key={Learner.id} onClick={() => toggleAudio(index)}>           
+            <img src={Learner.url} alt="" className='photomg' />
           </div>
         ))}
       </div>
