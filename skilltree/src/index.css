@@ -14,6 +14,10 @@
   justify-content: center; /* Pour centrer horizontalement */
   align-items: center; /* Pour centrer verticalement */
 }
+.photomg {
+  height: 200px;
+  width: 200px;
+}
 .photo {
   z-index: -10;
   display: flex;
@@ -37,4 +41,12 @@
   display: flex;
   width: 100vw;
   height: 50vh;
+}
+.reglageimg {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+}
+.paddingto {
+  padding-top: 50vh;
 }

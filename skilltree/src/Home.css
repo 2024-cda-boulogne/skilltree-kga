@@ -1,12 +1,11 @@
 body {
   background-image: url(./images/bg.png);
-  min-height: 138vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  font-family: 'New Rodin', sans-serif;
+  font-family: "New Rodin", sans-serif;
 }
 
 .text-white {
