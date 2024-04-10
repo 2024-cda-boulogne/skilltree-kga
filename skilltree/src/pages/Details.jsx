@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../Details.css';
 
 function Details() {
+    useEffect(() => {
+        const audio = new Audio('./Détails.mp3');
+        audio.loop = true; // Active la boucle
+        audio.play();
+
+    }, []);
+
     return (
         <div id='FlexDetails'>
             <section id='List'>

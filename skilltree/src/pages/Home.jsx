@@ -24,18 +24,18 @@ function Home() {
 
   // Tableau contenant les URLs de chaque musique correspondant à chaque div
   const musicUrls = [
-    'Eric.mp3',
+    'Simon.mp3',
+    'Cédric.mp3',
     'Alex.mp3',
+    'Alexandre.mp3',
+    'Eric.mp3',
+    'Geoffrey.mp3',
     'Karl.mp3',
     'ThéoD.mp3',
     'Kevin.mp3',
-    'Vivien.mp3',
+    'ThéoC.mp3',
     'William.mp3',
-    'ThéoD.mp3',
-    'Geoffrey.mp3',
-    'Alexandre.mp3',
-    'Cédric.mp3',
-    'Simon.mp3',
+    'Vivien.mp3',
     // Ajoutez autant d'URLs de musique que nécessaire
   ];
 
@@ -58,6 +58,13 @@ function Home() {
         {data.map((Learner, index) => (
           <div key={Learner.id} onClick={() => toggleAudio(index)}>           
             <img src={Learner.url} alt="" className='photomg' />
+            {/* Vérifier si cette div est actuellement sélectionnée */}
+            {selectedDivIndex === index && (
+              <audio controls autoPlay>
+                <source src={musicUrls[index]} type="audio/mp3" />
+                Your browser does not support the audio element.
+              </audio>
+            )}
           </div>
         ))}
       </div>
@@ -82,7 +89,7 @@ function Home() {
         </div>
 
         <div className='more-window'>
-          <p className='text-yellow'>VOIR +</p>
+          <a className='text-yellow' href="/Details">VOIR +</a>
         </div>
       </div>
     </div>
