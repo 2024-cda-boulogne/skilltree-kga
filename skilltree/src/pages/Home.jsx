@@ -61,7 +61,7 @@ function Home() {
           </div>
         ))}
       </div>
-      <div>
+      <div className='paddingto'>
         <div className='border-showskill-window'>
           <div className='showskill-window'>
 
