@@ -4,6 +4,7 @@
 
 .image-bordure {
   background-image: url("./img/image-removebg-preview_2.png");
+  margin-left: 70px;
   background-size: cover; /* Pour éviter la répétition et couvrir toute la surface de la div */
   background-position: center; /* Pour centrer l'image horizontalement et verticalement */
   height: 236px;
@@ -24,4 +25,15 @@
   border-radius: 55%;
   width: 80%;
   height: 80%;
+}
+.dflexresize {
+  align-items: center;
+  justify-content: center;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  flex-wrap: wrap;
+  display: flex;
+  width: 100vw;
+  height: 50vh;
 }
