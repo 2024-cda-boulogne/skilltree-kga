@@ -7,6 +7,14 @@ body{
     flex-direction: column;
     gap: 1vh;
 }
+.REACListComp{
+    display: flex;
+    width: 50vw;
+    height: 8vh;
+    align-items: center;
+    border-radius: 6px;
+    border: #C0C0C0 2px solid;
+}
 .REACList{
     display: flex;
     width: 50vw;
@@ -72,3 +80,29 @@ audio{
 .photo{
     z-index: -10;
 }
+
+@media screen and (max-width: 768px) {
+
+    #Card{
+        display: none;
+    }
+    
+    .showskill-window {
+      display: none;
+    }
+  
+    .name-window {
+      width: 60vh;
+      margin-top: 27vh
+    }
+  
+    .more-window {
+      clip-path: polygon(0 0, 100% 0%, 95% 100%, 5% 100%);
+      width: 25vh;
+      height: 8vh;
+      left: 50%;
+      transform: translateX(-50%);
+      right: auto;
+    }
+    
+  }
