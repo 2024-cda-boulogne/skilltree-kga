@@ -41,12 +41,21 @@
   display: flex;
   width: 100vw;
   height: 50vh;
+  margin-top: 10px;
 }
 .reglageimg {
-  width: 15%;
+  width: 15vw;
   display: flex;
   justify-content: center;
+  position: relative;
+  align-items: center;
 }
 .paddingto {
   padding-top: 50vh;
+}
+.audio-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }

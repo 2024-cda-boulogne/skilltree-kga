@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../Home.css';
 import supabase from '../services/supabase';
+import "../Test.css"
 
 function Home() {
   const [data, setData] = useState([]);
@@ -39,7 +40,8 @@ function Home() {
     // Ajoutez autant d'URLs de musique que nécessaire
   ];
 
-  // Fonction pour activer ou désactiver la musique
+  // Fonction pour activer ou désactiver la musique et la div containerhud
+// Fonction pour activer ou désactiver la musique et la div containerhud
   const toggleAudio = (index) => {
     // Si la div actuellement sélectionnée est différente de l'index passé en paramètre,
     // arrêter la musique de la div précédente et jouer la musique de la nouvelle div
@@ -47,7 +49,7 @@ function Home() {
       setSelectedDivIndex(index);
     } else {
       // Si la div actuellement sélectionnée est la même que l'index passé en paramètre,
-      // arrêter la musique de cette div
+      // arrêter la musique de cette div et cacher la div containerhud
       setSelectedDivIndex(null);
     }
   };
@@ -65,13 +67,21 @@ function Home() {
                 Your browser does not support the audio element.
               </audio>
             )}
+            {/* Vérifier si cette div est actuellement sélectionnée pour afficher la div containerhud */}
+            {selectedDivIndex === index && (
+              <div className='containerhud active'>
+                <div className='testcontour' id='rotate0'></div>
+                <div className='testcontour' id='rotate90'></div>
+                <div className='testcontour' id='rotate180'></div>
+                <div className='testcontour' id='rotate270'></div>
+              </div>
+            )}
           </div>
         ))}
       </div>
       <div className='paddingto'>
         <div className='border-showskill-window'>
           <div className='showskill-window'>
-
             <div className='skill-window'>
               <p className='top-mark-window text-black'>Développer une application sécurisée</p>
             </div>
@@ -81,7 +91,6 @@ function Home() {
             <div className='skill-window'>
               <p className='top-mark-window text-black'>Préparer le déploiement d’une application sécurisée</p>
             </div>
-
           </div>
         </div>
         <div className='name-window'>
