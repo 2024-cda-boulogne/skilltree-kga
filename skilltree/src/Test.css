@@ -2,7 +2,7 @@
     clip-path: polygon(100% 0, 85% 15%, 15% 15%, 15% 85%, 0 100%, 0 10%, 10% 0);
     width: 75px;
     height: 75px;   
-    background-color: rgb(238, 255, 0);
+    background-color:#E5CD5F;
     animation: scintillation 1.5s linear infinite; /* Définit l'animation de scintillement */
 }
 @keyframes scintillation {
@@ -43,3 +43,7 @@
   .containerhud.active {
     visibility: visible; /* Rendre visible lorsque la div est active */
   }
+  .selected {
+    transform: scale(1.1);
+  }
+  

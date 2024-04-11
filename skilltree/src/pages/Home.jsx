@@ -58,7 +58,7 @@ function Home() {
     <div>
       <div className='dflexresize'>
         {data.map((Learner, index) => (
-          <div key={Learner.id} onClick={() => toggleAudio(index)} className='reglageimg'>           
+          <div key={Learner.id} onClick={() => toggleAudio(index)} className={`reglageimg ${selectedDivIndex === index ? 'selected' : ''}`}>           
             <img src={Learner.url} alt="" className='photomg' />
             {/* Vérifier si cette div est actuellement sélectionnée */}
             {selectedDivIndex === index && (
