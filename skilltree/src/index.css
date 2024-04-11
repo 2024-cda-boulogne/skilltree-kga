@@ -9,8 +9,8 @@
   width: 100%;
 }
 .photomg {
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 200px;
 }
 
 .dflexresize {
@@ -26,7 +26,7 @@
   width: 100vw;
   height: 47%;
   margin-top: 10px;
-
+}
 .reglageimg {
   width: 15vw;
   display: flex;
