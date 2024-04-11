@@ -25,12 +25,12 @@ function Home() {
       console.error("Error fetching data from 'Learners' table:", error.message);
     }
   };
-
-  const fetchDataObtain = async () => {
+  const fetchDataObtain = async (learnerId) => {
     try {
       const { data: fetchedData, error } = await supabase
         .from('Obtain')
-        .select('*');
+        .select('*')
+        .eq('id_learner', learnerId); // Filtrer les données par ID de Learner
       if (error) {
         throw error;
       }
@@ -60,27 +60,31 @@ function Home() {
   const findIndexById = (id) => {
     return data.findIndex(item => item.id === id);
   };
+  
   // Fonction pour activer ou désactiver la musique
-  const toggleAudio = (id) => {
-    // Trouver l'index correspondant à l'ID
+  const toggleAudio = async (id) => {
+    console.log("Toggle audio function called with ID:", id);
     const index = findIndexById(id);
-    
-    // Si l'index est trouvé et est différent de l'index de la div actuellement sélectionnée,
-    // mettre à jour l'index de la div sélectionnée et sélectionner les données correspondantes
-    if (index !== -1 && selectedDivIndex !== index) {
-      setSelectedDivIndex(index);
-      // Filtrer les données de la table 'Obtain' en fonction de l'ID du learner
+    console.log("Index of the clicked div:", index);
+  
+    if (index !== -1) {
       const learnerId = data[index].id;
-      setSelectedData(selectedData.filter(item => item.id_learner === learnerId));
-    } else if (selectedDivIndex === index) {
-      // Si la même div est cliquée à nouveau, réinitialiser les données sélectionnées
-      setSelectedDivIndex(null);
-      setSelectedData(null);
+      console.log("Learner ID:", learnerId);
+  
+      if (selectedDivIndex === index) {
+        console.log("Same div clicked again, resetting selected data and index.");
+        setSelectedDivIndex(null);
+        setSelectedData(null);
+      } else {
+        console.log("New div clicked, updating selected data.");
+        setSelectedDivIndex(index);
+        // Chargez les données de 'Obtain' uniquement si elles n'ont pas déjà été chargées
+        if (!selectedData) {
+          await fetchDataObtain(learnerId);
+        }
+      }
     }
   };
-  
-  
-  
   
   
   return (
