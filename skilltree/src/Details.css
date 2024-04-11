@@ -2,54 +2,65 @@ body{
     background-color: black;
     color: white;
 }
+
 #List{
     display: flex;
     flex-direction: column;
     gap: 1vh;
 }
+
 .REACList{
     display: flex;
     width: 50vw;
-    height: 5vh;
+    height: 8%;
     align-items: center;
     border-radius: 6px;
     border: #C0C0C0 2px solid;
 }
+
 .REACNumber{
-    width: 3.5vw;
+    width: 5.5vh;
     text-align: center;
     font-size: 30px;
 }
-.REACName{
-    width: 39vw;
-    padding-left:1vw ;
+
+.REACName {
+    width: 90%;
+    max-width: 39vw;
+    padding-left: 1vw;
     text-align: start;
-    font-size: 20px;
+    font-size: 1.5vw;
 }
+
 .Line{
     border: #C0C0C0 1px solid;
-    height: 5vh;
+    height: 100%;
 }
+
 .REACIMG{
     height: 4.5vh;
     padding-left: 2.25vw;
 }
+
 #FlexDetails{
     display: flex;
     flex-direction: row;
     gap: 5vw;
-    padding-top: 10vh;
+    padding-top: 5vh;
     justify-content: center;
 
 }
+
 #Card{
     display: flex;
     flex-direction: column;
     border-radius: 50px;
     border: #C0C0C0 2px solid;
     width: 25vw;
+    height: 85%;
     text-align: center;
 }
+
 .CardIMG{
     height: 25vh;
     width: 25vh;
@@ -60,6 +71,7 @@ body{
     object-fit: cover;
     margin-right: auto;
 }
+
 audio{
     display: none;
 }
@@ -69,6 +81,79 @@ audio{
     transition: 5s;
     z-index: 10;
 }
+
 .photo{
     z-index: -10;
 }
+
+@media screen and (max-width: 847px) {
+    
+    p {
+      font-size: 0%;
+    }
+
+    #Card{
+        height: 50vh;
+    }
+    
+  }
+
+@media screen and (max-width: 768px) {
+
+    #List {
+        display: flex;
+        flex-direction: column;
+        gap: 1vh;
+    }
+
+    #Card{
+        display: none;
+    }
+    
+    .REACList {
+        display: flex;
+        width: 90%;
+        max-width: 50vw;
+        height: auto;
+        align-items: center;
+        border-radius: 6px;
+        border: #C0C0C0 2px solid;
+        margin-bottom: 1vh;
+    }
+    
+    .REACNumber {
+        width: 10%;
+        max-width: 5.5vh;
+        text-align: center;
+        font-size: 3vw;
+    }
+    
+    .REACName {
+        width: 90%;
+        max-width: 39vw;
+        padding-left: 1vw;
+        text-align: start;
+        font-size: 2vw;
+    }
+    
+    .Line {
+        border: #C0C0C0 1px solid;
+        height: 100%;
+        margin: 0.5vh 0;
+    }
+    
+    .REACIMG {
+        height: 4.5vh;
+        padding-left: 2.25vw;
+    }
+    
+    #FlexDetails {
+        display: flex;
+        flex-direction: row;
+        gap: 5vw;
+        padding-top: 5vh;
+        justify-content: center;
+    }
+    
+    
+  }
