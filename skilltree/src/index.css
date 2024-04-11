@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+.audio-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
 .photomg {
   height: 150px;
   width: 150px;
@@ -19,12 +25,14 @@
   display: flex;
   width: 100vw;
   height: 47%;
-}
+  margin-top: 10px;
 
 .reglageimg {
-  width: 15%;
+  width: 15vw;
   display: flex;
   justify-content: center;
+  position: relative;
+  align-items: center;
 }
 
 .paddingto {
@@ -115,5 +123,4 @@
     height: 100px;
     width: 100px;
   }
-  
 }
