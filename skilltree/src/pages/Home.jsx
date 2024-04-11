@@ -4,23 +4,42 @@ import supabase from '../services/supabase';
 
 function Home() {
   const [data, setData] = useState([]);
-  const [selectedDivIndex, setSelectedDivIndex] = useState(null); // Index de la div sélectionnée
+  const [selectedDivIndex, setSelectedDivIndex] = useState(null);
+  const [selectedData, setSelectedData] = useState(null);
 
   useEffect(() => {
-    async function fetchData() {
+    fetchDataLearners();
+    fetchDataObtain();
+  }, []);
+
+  const fetchDataLearners = async () => {
+    try {
       const { data: fetchedData, error } = await supabase
         .from('Learners')
         .select('*');
       if (error) {
-        console.error(error);
-        return;
+        throw error;
       }
-
       setData(fetchedData);
+    } catch (error) {
+      console.error("Error fetching data from 'Learners' table:", error.message);
     }
+  };
 
-    fetchData();
-  }, []);
+  const fetchDataObtain = async () => {
+    try {
+      const { data: fetchedData, error } = await supabase
+        .from('Obtain')
+        .select('*');
+      if (error) {
+        throw error;
+      }
+      setSelectedData(fetchedData); // Mise à jour de selectedData avec les données obtenues
+      console.log("Data from 'obtain' table:", fetchedData);
+    } catch (error) {
+      console.error("Error fetching data from 'obtain' table:", error.message);
+    }
+  };
 
   // Tableau contenant les URLs de chaque musique correspondant à chaque div
   const musicUrls = [
@@ -38,25 +57,37 @@ function Home() {
     'Vivien.mp3',
     // Ajoutez autant d'URLs de musique que nécessaire
   ];
-
+  const findIndexById = (id) => {
+    return data.findIndex(item => item.id === id);
+  };
   // Fonction pour activer ou désactiver la musique
-  const toggleAudio = (index) => {
-    // Si la div actuellement sélectionnée est différente de l'index passé en paramètre,
-    // arrêter la musique de la div précédente et jouer la musique de la nouvelle div
-    if (selectedDivIndex !== index) {
+  const toggleAudio = (id) => {
+    // Trouver l'index correspondant à l'ID
+    const index = findIndexById(id);
+    
+    // Si l'index est trouvé et est différent de l'index de la div actuellement sélectionnée,
+    // mettre à jour l'index de la div sélectionnée et sélectionner les données correspondantes
+    if (index !== -1 && selectedDivIndex !== index) {
       setSelectedDivIndex(index);
-    } else {
-      // Si la div actuellement sélectionnée est la même que l'index passé en paramètre,
-      // arrêter la musique de cette div
+      // Filtrer les données de la table 'Obtain' en fonction de l'ID du learner
+      const learnerId = data[index].id;
+      setSelectedData(selectedData.filter(item => item.id_learner === learnerId));
+    } else if (selectedDivIndex === index) {
+      // Si la même div est cliquée à nouveau, réinitialiser les données sélectionnées
       setSelectedDivIndex(null);
+      setSelectedData(null);
     }
   };
-
+  
+  
+  
+  
+  
   return (
     <div>
       <div className='dflexresize'>
         {data.map((Learner, index) => (
-          <div key={Learner.id} onClick={() => toggleAudio(index)} className='reglageimg'>           
+          <div key={Learner.id} onClick={() => toggleAudio(Learner.id)} className={'reglageimg ' + Learner.id}>           
             <img src={Learner.url} alt="" className='photomg' />
             {/* Vérifier si cette div est actuellement sélectionnée */}
             {selectedDivIndex === index && (
@@ -71,9 +102,18 @@ function Home() {
       <div className='paddingto'>
         <div className='border-showskill-window'>
           <div className='showskill-window'>
-
             <div className='skill-window'>
               <p className='top-mark-window text-black'>Développer une application sécurisée</p>
+              <div>
+              <div>
+                  {selectedData && selectedData.map((Obtain) => (
+                    <div key={Obtain.id}>
+                      <p>ID Learner: {Obtain.id_learner}</p>
+                      <p>ID Skill: {Obtain.id_skills}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
             <div className='skill-window'>
               <p className='top-mark-window text-black'>Concevoir et développer une application sécurisée organisée en couches</p>
