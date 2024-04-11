@@ -71,20 +71,21 @@ function Home() {
       const learnerId = data[index].id;
       console.log("Learner ID:", learnerId);
   
-      if (selectedDivIndex === index) {
-        console.log("Same div clicked again, resetting selected data and index.");
-        setSelectedDivIndex(null);
-        setSelectedData(null);
-      } else {
+      // Vérifiez si la div cliquée est différente de celle déjà sélectionnée
+      if (selectedDivIndex !== index) {
         console.log("New div clicked, updating selected data.");
         setSelectedDivIndex(index);
         // Chargez les données de 'Obtain' uniquement si elles n'ont pas déjà été chargées
-        if (!selectedData) {
-          await fetchDataObtain(learnerId);
-        }
+        await fetchDataObtain(learnerId);
+      } else {
+        console.log("Same div clicked again, resetting selected data and index.");
+        setSelectedDivIndex(null);
+        setSelectedData(null);
       }
     }
   };
+  
+  
   
   
   return (
