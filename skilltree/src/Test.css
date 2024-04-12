@@ -1,7 +1,5 @@
 .testcontour{
     clip-path: polygon(100% 0, 85% 15%, 15% 15%, 15% 85%, 0 100%, 0 10%, 10% 0);
-    width: 75px;
-    height: 75px;   
     background-color:#E5CD5F;
     animation: scintillation 1.5s linear infinite; /* Définit l'animation de scintillement */
 }
@@ -12,24 +10,22 @@
     75% { opacity: 0.75; } /* à 75%, l'élément devient transparent */
     100% { opacity: 1; } /* À 100%, l'élément est à nouveau complètement visible */
 }
-#m-top-50{
-    margin-top: 50px;
+
+.testcontour{
+    height: 40px;
+    width: 40px;
 }
 #rotate0{
-    transform: translate(85px, -5px);
+    transform: translate(-5px, -5px);
 }
 #rotate90{
-    transform: rotate(90deg) translate(-80px, -230px);  
+    transform: rotate(90deg) translate(-45px, -65px);  
 }
 #rotate180{
-    transform: rotate(180deg) translate(-230px, 20px);
+    transform: rotate(180deg) translate(-65px, 15px);
 }
 #rotate270{
-    transform: rotate(270deg) translate(95px, 85px);
-}
-.reglageimg:hover{
-    transform: scale(1.1);
-    transition: 1s;
+    transform: rotate(270deg) translate(55px, -5px);
 }
 .containerhud {
     position: absolute;
@@ -38,12 +34,94 @@
     width: 100%;
     height: 100%;
     visibility: hidden; /* Initialiser à "hidden" par défaut */
-  }
-  
-  .containerhud.active {
+}
+
+.containerhud.active {
     visibility: visible; /* Rendre visible lorsque la div est active */
-  }
-  .selected {
+}
+.selected {
     transform: scale(1.1);
-  }
+}
+
+@media screen and (min-width: 1000px){
+
+    .testcontour{
+        width: 75px;
+        height: 75px;   
+    }
+    #m-top-50{
+        margin-top: 50px;
+    }
+    #rotate0{
+        transform: translate(40px, -5px);
+    }
+    #rotate90{
+        transform: rotate(90deg) translate(-80px, -180px);  
+    }
+    #rotate180{
+        transform: rotate(180deg) translate(-180px, 20px);
+    }
+    #rotate270{
+        transform: rotate(270deg) translate(95px, 40px);
+    }
+    .reglageimg:hover{
+        transform: scale(1.1);
+        transition: 1s;
+    }
+    .containerhud {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        visibility: hidden; /* Initialiser à "hidden" par défaut */
+    }
+    
+    .containerhud.active {
+        visibility: visible; /* Rendre visible lorsque la div est active */
+    }
+    .selected {
+        transform: scale(1.1);
+    }
+}
+@media screen and (min-width: 2500px){
+    .testcontour{
+        width: 75px;
+        height: 75px;   
+    }
+    #m-top-50{
+        margin-top: 50px;
+    }
+    #rotate0{
+        transform: translate(85px, -5px);
+    }
+    #rotate90{
+        transform: rotate(90deg) translate(-80px, -230px);  
+    }
+    #rotate180{
+        transform: rotate(180deg) translate(-230px, 20px);
+    }
+    #rotate270{
+        transform: rotate(270deg) translate(95px, 85px);
+    }
+    .reglageimg:hover{
+        transform: scale(1.1);
+        transition: 1s;
+    }
+    .containerhud {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        visibility: hidden; /* Initialiser à "hidden" par défaut */
+    }
+    
+    .containerhud.active {
+        visibility: visible; /* Rendre visible lorsque la div est active */
+    }
+    .selected {
+        transform: scale(1.1);
+    }
+}
   

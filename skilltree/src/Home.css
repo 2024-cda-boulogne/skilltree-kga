@@ -8,133 +8,103 @@ body {
   font-family: "New Rodin", sans-serif;
 }
 
-.text-white {
-  color: white;
-}
-
-.text-black {
-  color: black;
-}
-
-.text-yellow {
-  color: yellow;
-}
-
-.border-showskill-window {
-  border: solid;
-  border-color: lightgray;
-  border-radius: 1vh;
-  width: 99%;
-  height: 35%;
-  padding: 0.5vh;
-}
-
-.showskill-window {
-  display: flex;
-  justify-content: center;
-  background-color: lightgray;
-  border-radius: 1vh;
-  width: 100%;
-  height: 35vh;
-  max-width: 140vh;
-}
-
-.skill-window {
-  justify-content: center;
-  text-align: center;
-  background-color: rgb(168, 168, 168);
-  box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.375);
-  border-radius: 4vh;
-  width: 80%;
-  height: 30vh;
-  margin: 2vh;
-  font-size: 50%;
-}
-
-.top-mark-window {
-  justify-content: center;
-  text-align: center;
-  background-color: rgb(233, 233, 233);
-  border-radius: 4vh 4vh 0vh 0vh;
-  font-size: 95%;
-  height: 30%;
-  display: flex;
-  align-items: center;
-  border-bottom: 0.3vh solid rgba(0, 0, 0, 0.355);
-}
-
-.name-window {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 70%;
-  height: 8vh;
-  clip-path: polygon(0 0, 100% 0%, 95% 100%, 5% 100%);
-  margin: 2vh auto;
-  font-size: 70%;
-}
-
-.more-window {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
-  border: solid;
-  border-color: white;
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 15%;
-  height: 8vh;
-  position: absolute;
-  bottom: 3vh;
-  font-size: 70%;
-  right: 0vh;
-}
-
-@media screen and (max-width: 768px) {
-  
-  .skill-window {
-    display: none;
-  }
-
-  .border-showskill-window {
-    display: none;
-  }
-  
+@media screen and (max-width: 1000px) {
   .showskill-window {
     display: none;
   }
-
-  .name-window {
-    width: 60vh;
-    margin-top: 27vh
+  .dflexresize {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
   }
-
-  .more-window {
-    clip-path: polygon(0 0, 100% 0%, 95% 100%, 5% 100%);
-    width: 25vh;
-    height: 8vh;
-    left: 50%;
-    transform: translateX(-50%);
-    right: auto;
+  audio{
+    display: none;
   }
-  
 }
 
-@media screen and (max-width: 376px) {
+
+@media screen and (min-width: 1000px) {
+
+  .text-white {
+    color: white;
+  }
+
+  .text-black {
+    color: black;
+  }
+
+  .text-yellow {
+    color: yellow;
+  }
+
+  .border-showskill-window {
+    border: solid;
+    border-color: lightgray;
+    border-radius: 1vh;
+    width: 99%;
+    height: 35%;
+    padding: 0.5vh;
+  }
+
+  .showskill-window {
+    display: flex;
+    justify-content: center;
+    background-color: lightgray;
+    border-radius: 1vh;
+    width: 100%;
+    height: 35vh;
+    max-width: 140vh;
+  }
+
+  .skill-window {
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(168, 168, 168);
+    box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.375);
+    border-radius: 4vh;
+    width: 80%;
+    height: 30vh;
+    margin: 2vh;
+    font-size: 50%;
+  }
+
+  .top-mark-window {
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(233, 233, 233);
+    border-radius: 4vh 4vh 0vh 0vh;
+    font-size: 95%;
+    height: 30%;
+    display: flex;
+    align-items: center;
+    border-bottom: 0.3vh solid rgba(0, 0, 0, 0.355);
+  }
 
   .name-window {
-    width: 50vh;
-    margin-top: 27vh
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 70%;
+    height: 8vh;
+    clip-path: polygon(0 0, 100% 0%, 95% 100%, 5% 100%);
+    margin: 2vh auto;
+    font-size: 70%;
   }
 
   .more-window {
-    clip-path: polygon(0 0, 100% 0%, 95% 100%, 5% 100%);
-    width: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0 100%);
+    border: solid;
+    border-color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 15%;
     height: 8vh;
-    left: 50%;
-    transform: translateX(-50%);
-    right: auto;
+    position: absolute;
+    bottom: 3vh;
+    font-size: 70%;
+    right: 0vh;
   }
-  
 }
