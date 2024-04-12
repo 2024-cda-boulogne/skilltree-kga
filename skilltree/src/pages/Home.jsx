@@ -182,11 +182,22 @@ function Home() {
                   {/* Vérifier si category1Skills est défini avant de l'utiliser */}
                   {category1Skills && (
                     // Trouver le rang correspondant à l'id_skills dans les données des compétences de la catégorie 1
-                    category1Skills.find(skill => skill.id === obtainItem.id_skills)?.rank
+                    (() => {
+                      const rank = category1Skills.find(skill => skill.id === obtainItem.id_skills)?.rank;
+                      switch (rank) {
+                        case 1:
+                          return <img src="./bronze.png" alt="Image 1" />;
+                        case 2:
+                          return <img src="./silver.png" alt="Image 2" />;
+                        case 3:
+                          return <img src="./gold.png" alt="Image 3" />;
+                        default:
+                          return rank;
+                      }
+                    })()
                   )}
                 </div>
               ))}
-
             </div>
             <div className='skill-window'>
               <p className='top-mark-window text-black'>Concevoir et développer une application sécurisée organisée en couches</p>
@@ -195,7 +206,19 @@ function Home() {
                   {/* Vérifier si category1Skills est défini avant de l'utiliser */}
                   {category2Skills && (
                     // Trouver le rang correspondant à l'id_skills dans les données des compétences de la catégorie 1
-                    category2Skills.find(skill => skill.id === obtainItem.id_skills)?.rank
+                    (() => {
+                      const rank = category2Skills.find(skill => skill.id === obtainItem.id_skills)?.rank;
+                      switch (rank) {
+                        case 1:
+                          return <img src="./bronze.png" alt="Image 1" />;
+                        case 2:
+                          return <img src="./silver.png" alt="Image 2" />;
+                        case 3:
+                          return <img src="./gold.png" alt="Image 3" />;
+                        default:
+                          return rank;
+                      }
+                    })()
                   )}
                 </div>
               ))}
@@ -207,7 +230,19 @@ function Home() {
                   {/* Vérifier si category1Skills est défini avant de l'utiliser */}
                   {category3Skills && (
                     // Trouver le rang correspondant à l'id_skills dans les données des compétences de la catégorie 1
-                    category3Skills.find(skill => skill.id === obtainItem.id_skills)?.rank
+                    (() => {
+                      const rank = category3Skills.find(skill => skill.id === obtainItem.id_skills)?.rank;
+                      switch (rank) {
+                        case 1:
+                          return <img src="./bronze.png" alt="Image 1" />;
+                        case 2:
+                          return <img src="./silver.png" alt="Image 2" />;
+                        case 3:
+                          return <img src="./gold.png" alt="Image 3" />;
+                        default:
+                          return rank;
+                      }
+                    })()
                   )}
                 </div>
               ))}
