@@ -11,6 +11,9 @@ function Home() {
   const [filteredDataCategory3, setFilteredDataCategory3] = useState([]);
   const [firstCategory, setFirstCategory] = useState(null); // Ajout de l'état pour la première catégorie
   const [category1Skills, setCategory1Skills] = useState(null); // Ajout de l'état pour les compétences de la catégorie 1
+  const [category2Skills, setCategory2Skills] = useState([]);
+  const [category3Skills, setCategory3Skills] = useState([]);
+
 
   useEffect(() => {
     fetchDataLearners();
@@ -29,43 +32,82 @@ function Home() {
       console.error("Error fetching data from 'Learners' table:", error.message);
     }
   };
-
   const fetchDataObtain = async (learnerId) => {
     try {
       const { data: fetchedData, error } = await supabase
         .from('Obtain')
         .select('*')
         .eq('id_learner', learnerId); // Filtrer les données par ID de Learner
-
+  
       if (error) {
         throw error;
       }
-
+  
       const skillIds = fetchedData.map(obtainItem => obtainItem.id_skills);
-
+  
+      // Récupérer les compétences de la catégorie 1 dans la table "Skills" avec leur rank
       const category1SkillsResponse = await supabase
         .from('Skills')
         .select('id, rank')
         .eq('category', '1');
       const category1SkillsData = category1SkillsResponse.data;
-
+  
       const category1Skills = category1SkillsData.map(skillItem => ({
         id: skillItem.id,
         rank: skillItem.rank
       }));
-
+  
+      // Récupérer les compétences de la catégorie 2 dans la table "Skills" avec leur rank
+      const category2SkillsResponse = await supabase
+        .from('Skills')
+        .select('id, rank')
+        .eq('category', '2');
+      const category2SkillsData = category2SkillsResponse.data;
+  
+      const category2Skills = category2SkillsData.map(skillItem => ({
+        id: skillItem.id,
+        rank: skillItem.rank
+      }));
+  
+      // Récupérer les compétences de la catégorie 3 dans la table "Skills" avec leur rank
+      const category3SkillsResponse = await supabase
+        .from('Skills')
+        .select('id, rank')
+        .eq('category', '3');
+      const category3SkillsData = category3SkillsResponse.data;
+  
+      const category3Skills = category3SkillsData.map(skillItem => ({
+        id: skillItem.id,
+        rank: skillItem.rank
+      }));
+  
+      // Mettre à jour les états d'état avec les données filtrées
       setCategory1Skills(category1Skills);
-
-      const filteredDataCategory1 = fetchedData.filter(item => 
+      setCategory2Skills(category2Skills);
+      setCategory3Skills(category3Skills);
+  
+      const filteredDataCategory1 = fetchedData.filter(item =>
         category1Skills.some(skill => skill.id === item.id_skills)
       );
-
       setFilteredDataCategory1(filteredDataCategory1);
       console.log("Filtered Data Category 1:", filteredDataCategory1);
+  
+      const filteredDataCategory2 = fetchedData.filter(item =>
+        category2Skills.some(skill => skill.id === item.id_skills)
+      );
+      setFilteredDataCategory2(filteredDataCategory2);
+      console.log("Filtered Data Category 2:", filteredDataCategory2);
+  
+      const filteredDataCategory3 = fetchedData.filter(item =>
+        category3Skills.some(skill => skill.id === item.id_skills)
+      );
+      setFilteredDataCategory3(filteredDataCategory3);
+      console.log("Filtered Data Category 3:", filteredDataCategory3);
     } catch (error) {
       console.error("Error fetching data from 'obtain' table:", error.message);
     }
   };
+  
 
   const musicUrls = [
     'Simon.mp3',
@@ -140,9 +182,27 @@ function Home() {
             </div>
             <div className='skill-window'>
               <p className='top-mark-window text-black'>Concevoir et développer une application sécurisée organisée en couches</p>
+              {filteredDataCategory2.map((obtainItem) => (
+                <div key={obtainItem.id}>
+                  {/* Vérifier si category1Skills est défini avant de l'utiliser */}
+                  {category2Skills && (
+                    // Trouver le rang correspondant à l'id_skills dans les données des compétences de la catégorie 1
+                    category2Skills.find(skill => skill.id === obtainItem.id_skills)?.rank
+                  )}
+                </div>
+              ))}
             </div>
             <div className='skill-window'>
               <p className='top-mark-window text-black'>Préparer le déploiement d’une application sécurisée</p>
+              {filteredDataCategory3.map((obtainItem) => (
+                <div key={obtainItem.id}>
+                  {/* Vérifier si category1Skills est défini avant de l'utiliser */}
+                  {category3Skills && (
+                    // Trouver le rang correspondant à l'id_skills dans les données des compétences de la catégorie 1
+                    category3Skills.find(skill => skill.id === obtainItem.id_skills)?.rank
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>
