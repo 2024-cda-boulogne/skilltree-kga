@@ -27,19 +27,35 @@ function Home() {
   };
   const fetchDataObtain = async (learnerId) => {
     try {
+      // Récupérer les données de la table "Obtain" pour un ID de Learner donné
       const { data: fetchedData, error } = await supabase
         .from('Obtain')
         .select('*')
         .eq('id_learner', learnerId); // Filtrer les données par ID de Learner
+  
       if (error) {
         throw error;
       }
-      setSelectedData(fetchedData); // Mise à jour de selectedData avec les données obtenues
+      // Récupérer les ID de compétence de la table "Obtain"
+      const skillIds = fetchedData.map(obtainItem => obtainItem.id_skills);
+      // Récupérer les catégories correspondantes dans la table "Skills"
+      const categoriesResponse = await supabase
+        .from('Skills')
+        .select('category') // Sélectionne uniquement la colonne "category"
+        .in('id', skillIds);
+      const categoriesData = categoriesResponse.data;
+      // Créer un tableau contenant uniquement les catégories
+      const categories = categoriesData.map(categoryItem => categoryItem.category);
+      // Afficher les catégories
+      console.log("Categories:", categories);
+      // Mettre à jour selectedData avec les données obtenues
+      setSelectedData(fetchedData);
       console.log("Data from 'obtain' table:", fetchedData);
     } catch (error) {
       console.error("Error fetching data from 'obtain' table:", error.message);
     }
   };
+  
 
   // Tableau contenant les URLs de chaque musique correspondant à chaque div
   const musicUrls = [
