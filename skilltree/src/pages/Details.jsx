@@ -2,11 +2,14 @@ import React, { useEffect } from 'react';
 import '../Details.css';
 
 function Details() {
+    const selectedLearner = JSON.parse(localStorage.getItem('selectedLearner'));
+
     useEffect(() => {
         const audio = new Audio('./Détails.mp3');
         audio.loop = true; // Active la boucle
         audio.play();
-
+        const selectedLearner = JSON.parse(localStorage.getItem('selectedLearner'));
+        console.log("Selected learner:", selectedLearner);
     }, []);
 
     return (
@@ -91,11 +94,12 @@ function Details() {
                 </div>
             </section>
             <section id='Card'>
-                <img className='CardIMG' src="./eric.png" alt="" />
-                <h1 className='CardName'>Eric Da Silva Rocha</h1>
-                <h2 className='CardAge'>28 ans</h2>
-                <p className='CardStacks'>Stacks : React</p>
-                <p>Le back c’est d’la merde, le front c’est bien </p>
+            <img className='CardIMG' src={selectedLearner ? selectedLearner.url : "./eric.png"} alt="" />
+                <h1 className='CardName'>{selectedLearner ? selectedLearner.name : 'Nom du Learner'}</h1>
+                <h2 className='CardAge'>{selectedLearner ? selectedLearner.age : 'Âge du Learner'} ans </h2>
+                {/* Utilisez la stack du learner sélectionné pour le p */}
+                <p className='CardStacks'>{selectedLearner ? `Stacks : ${selectedLearner.stacks}` : 'Stacks du Learner'}</p>
+                <p>{selectedLearner ? selectedLearner.quote : 'Le back c’est d’la merde, le front c’est bien'}</p>
             </section>
         </div>
     );

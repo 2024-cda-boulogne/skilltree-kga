@@ -13,6 +13,7 @@ function Home() {
   const [category1Skills, setCategory1Skills] = useState(null); // Ajout de l'état pour les compétences de la catégorie 1
   const [category2Skills, setCategory2Skills] = useState([]);
   const [category3Skills, setCategory3Skills] = useState([]);
+  const [selectedLearner, setSelectedLearner] = useState(null);
 
 
   useEffect(() => {
@@ -103,10 +104,17 @@ function Home() {
       );
       setFilteredDataCategory3(filteredDataCategory3);
       console.log("Filtered Data Category 3:", filteredDataCategory3);
+  
+      // Stocker les données récupérées dans le local storage
+      localStorage.setItem('fetchedData', JSON.stringify(fetchedData));
+      localStorage.setItem('filteredDataCategory1', JSON.stringify(filteredDataCategory1));
+      localStorage.setItem('filteredDataCategory2', JSON.stringify(filteredDataCategory2));
+      localStorage.setItem('filteredDataCategory3', JSON.stringify(filteredDataCategory3));
     } catch (error) {
       console.error("Error fetching data from 'obtain' table:", error.message);
     }
   };
+  
   
 
   const musicUrls = [
@@ -136,15 +144,23 @@ function Home() {
     if (index !== -1) {
       const learnerId = data[index].id;
       console.log("Learner ID:", learnerId);
+      setSelectedLearner(data[index]);
   
       if (selectedDivIndex !== index) {
         console.log("New div clicked, updating selected data.");
         setSelectedDivIndex(index);
+        setSelectedLearner(data[index]); // Mettre à jour les données sélectionnées
         await fetchDataObtain(learnerId);
+      
+        // Stocker les données sélectionnées dans le local storage
+        localStorage.setItem('selectedLearner', JSON.stringify(data[index]));
       } else {
         console.log("Same div clicked again, resetting selected data and index.");
         setSelectedDivIndex(null);
-        setSelectedData(null);
+        setSelectedLearner(null); // Réinitialiser les données sélectionnées
+      
+        // Supprimer les données du local storage lorsqu'elles sont réinitialisées
+        localStorage.removeItem('selectedLearner');
       }
     }
   };
@@ -218,7 +234,7 @@ function Home() {
           <p className='text-white'>NOM</p>
         </div>
         <div className='more-window'>
-          <a className='text-yellow' href="/Details">VOIR +</a>
+        <a className='text-yellow' href="/Details" state={{ selectedLearner }}>VOIR +</a>
         </div>
       </div>
     </div>
