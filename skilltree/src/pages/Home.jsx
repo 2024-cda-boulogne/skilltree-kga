@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../Home.css';
 import supabase from '../services/supabase';
+import "../Test.css"
 
 function Home() {
   const [data, setData] = useState([]);
@@ -153,13 +154,22 @@ function Home() {
     <div>
       <div className='dflexresize'>
         {data.map((Learner, index) => (
-          <div key={Learner.id} onClick={() => toggleAudio(Learner.id)} className={'reglageimg ' + Learner.id}>           
+          <div key={Learner.id} onClick={() => toggleAudio(index)} className={`reglageimg ${selectedDivIndex === index ? 'selected ' : ''}${Learner.id}`}>
             <img src={Learner.url} alt="" className='photomg' />
             {selectedDivIndex === index && (
               <audio controls autoPlay>
                 <source src={musicUrls[index]} type="audio/mp3" />
                 Your browser does not support the audio element.
               </audio>
+            )}
+            {/* Vérifier si cette div est actuellement sélectionnée pour afficher la div containerhud */}
+            {selectedDivIndex === index && (
+              <div className='containerhud active'>
+                <div className='testcontour' id='rotate0'></div>
+                <div className='testcontour' id='rotate90'></div>
+                <div className='testcontour' id='rotate180'></div>
+                <div className='testcontour' id='rotate270'></div>
+              </div>
             )}
           </div>
         ))}
