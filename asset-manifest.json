@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/skilltree-kga/static/css/main.a85a264f.css",
-    "main.js": "/skilltree-kga/static/js/main.ab011a5c.js",
+    "main.js": "/skilltree-kga/static/js/main.f8baaa90.js",
     "static/js/453.d9ba58dc.chunk.js": "/skilltree-kga/static/js/453.d9ba58dc.chunk.js",
     "static/js/952.9f1d84db.chunk.js": "/skilltree-kga/static/js/952.9f1d84db.chunk.js",
     "static/media/bg.png": "/skilltree-kga/static/media/bg.61fc78cc3786b7382310.png",
     "static/media/logo.svg": "/skilltree-kga/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/skilltree-kga/index.html",
     "main.a85a264f.css.map": "/skilltree-kga/static/css/main.a85a264f.css.map",
-    "main.ab011a5c.js.map": "/skilltree-kga/static/js/main.ab011a5c.js.map",
+    "main.f8baaa90.js.map": "/skilltree-kga/static/js/main.f8baaa90.js.map",
     "453.d9ba58dc.chunk.js.map": "/skilltree-kga/static/js/453.d9ba58dc.chunk.js.map",
     "952.9f1d84db.chunk.js.map": "/skilltree-kga/static/js/952.9f1d84db.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a85a264f.css",
-    "static/js/main.ab011a5c.js"
+    "static/js/main.f8baaa90.js"
   ]
 }
