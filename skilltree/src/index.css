@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.audio-container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.photomg {
+  height: 200px;
+  width: 200px;
+}
+
+.dflexresize {
+  margin-top: 1%;
+  background-color: rgba(255, 255, 255, 0.511);
+  align-items: center;
+  justify-content: center;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  flex-wrap: wrap;
+  display: flex;
+  width: 100vw;
+  height: 47%;
+  margin-top: 10px;
+}
+.reglageimg {
+  width: 15vw;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+}
+
+.paddingto {
+  padding-top: 50vh;
+}
+
+@media screen and (max-width: 768px) {
+  .dflexresize {
+    margin-top: 1%;
+    background-color: rgba(255, 255, 255, 0);
+    align-items: center;
+    justify-content: center;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    flex-wrap: wrap;
+    display: flex;
+    width: 100vw;
+    height: auto;
+    padding: 20px;
+  }
+
+  .reglageimg {
+    width: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .photomg {
+    height: 150px;
+    width: 150px;
+  }
+
+}
+
+@media screen and (max-width: 640px) {
+  .dflexresize {
+    margin-top: 1%;
+    background-color: rgba(255, 255, 255, 0);
+    align-items: center;
+    justify-content: center;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    flex-wrap: wrap;
+    display: flex;
+    width: 100vw;
+    height: auto;
+    padding: 20px;
+  }
+
+  .reglageimg {
+    width: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .photomg {
+    height: 115px;
+    width: 115px;
+  }
+  
+}
+
+@media screen and (max-width: 450px) {
+  .dflexresize {
+    margin-top: 1%;
+    background-color: rgba(255, 255, 255, 0);
+    align-items: center;
+    justify-content: center;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    flex-wrap: wrap;
+    display: flex;
+    width: 100vw;
+    height: auto;
+    padding: 20px;
+  }
+
+  .reglageimg {
+    width: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .photomg {
+    height: 100px;
+    width: 100px;
+  }
+}
