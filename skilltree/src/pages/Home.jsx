@@ -46,43 +46,23 @@ function Home() {
   
       const skillIds = fetchedData.map(obtainItem => obtainItem.id_skills);
   
-      // Récupérer les compétences de la catégorie 1 dans la table "Skills" avec leur rank
-      const category1SkillsResponse = await supabase
-        .from('Skills')
-        .select('id, rank')
-        .eq('category', '1');
-      const category1SkillsData = category1SkillsResponse.data;
-  
-      const category1Skills = category1SkillsData.map(skillItem => ({
-        id: skillItem.id,
-        rank: skillItem.rank
-      }));
-  
-      // Récupérer les compétences de la catégorie 2 dans la table "Skills" avec leur rank
-      const category2SkillsResponse = await supabase
-        .from('Skills')
-        .select('id, rank')
-        .eq('category', '2');
-      const category2SkillsData = category2SkillsResponse.data;
-  
-      const category2Skills = category2SkillsData.map(skillItem => ({
-        id: skillItem.id,
-        rank: skillItem.rank
-      }));
-  
-      // Récupérer les compétences de la catégorie 3 dans la table "Skills" avec leur rank
-      const category3SkillsResponse = await supabase
-        .from('Skills')
-        .select('id, rank')
-        .eq('category', '3');
-      const category3SkillsData = category3SkillsResponse.data;
-  
-      const category3Skills = category3SkillsData.map(skillItem => ({
-        id: skillItem.id,
-        rank: skillItem.rank
-      }));
-  
+      // Récupérer les compétences de chaque catégorie dans la table "Skills" avec leur rank
+      const categoriesSkills = await Promise.all([
+        supabase.from('Skills').select('id, rank').eq('category', '1').in('id', skillIds),
+        supabase.from('Skills').select('id, rank').eq('category', '2').in('id', skillIds),
+        supabase.from('Skills').select('id, rank').eq('category', '3').in('id', skillIds),
+      ]);
+      
       // Mettre à jour les états d'état avec les données filtrées
+      const categorySkills = categoriesSkills.map(categorySkillsResponse => {
+        return categorySkillsResponse.data.map(skillItem => ({
+          id: skillItem.id,
+          rank: skillItem.rank
+        }));
+      });
+  
+      const [category1Skills, category2Skills, category3Skills] = categorySkills;
+  
       setCategory1Skills(category1Skills);
       setCategory2Skills(category2Skills);
       setCategory3Skills(category3Skills);
@@ -91,32 +71,30 @@ function Home() {
         category1Skills.some(skill => skill.id === item.id_skills)
       );
       setFilteredDataCategory1(filteredDataCategory1);
-      console.log("Filtered Data Category 1:", filteredDataCategory1);
   
       const filteredDataCategory2 = fetchedData.filter(item =>
         category2Skills.some(skill => skill.id === item.id_skills)
       );
       setFilteredDataCategory2(filteredDataCategory2);
-      console.log("Filtered Data Category 2:", filteredDataCategory2);
   
       const filteredDataCategory3 = fetchedData.filter(item =>
         category3Skills.some(skill => skill.id === item.id_skills)
       );
       setFilteredDataCategory3(filteredDataCategory3);
-      console.log("Filtered Data Category 3:", filteredDataCategory3);
   
-      // Stocker les données récupérées dans le local storage
+      // Stocker les données sélectionnées dans le local storage
       localStorage.setItem('fetchedData', JSON.stringify(fetchedData));
       localStorage.setItem('filteredDataCategory1', JSON.stringify(filteredDataCategory1));
       localStorage.setItem('filteredDataCategory2', JSON.stringify(filteredDataCategory2));
       localStorage.setItem('filteredDataCategory3', JSON.stringify(filteredDataCategory3));
+      localStorage.setItem('category1Skills', JSON.stringify(category1Skills));
+      localStorage.setItem('category2Skills', JSON.stringify(category2Skills));
+      localStorage.setItem('category3Skills', JSON.stringify(category3Skills));
+  
     } catch (error) {
       console.error("Error fetching data from 'obtain' table:", error.message);
     }
   };
-  
-  
-
   const musicUrls = [
     'Simon.mp3',
     'Cédric.mp3',

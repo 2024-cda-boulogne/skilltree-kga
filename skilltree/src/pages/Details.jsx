@@ -2,99 +2,52 @@ import React, { useEffect } from 'react';
 import '../Details.css';
 
 function Details() {
-    const selectedLearner = JSON.parse(localStorage.getItem('selectedLearner'));
-
     useEffect(() => {
         const audio = new Audio('./Détails.mp3');
         audio.loop = true; // Active la boucle
         audio.play();
-        const selectedLearner = JSON.parse(localStorage.getItem('selectedLearner'));
-        console.log("Selected learner:", selectedLearner);
     }, []);
+
+    // Récupère les données depuis le localStorage pour chaque catégorie
+    const categorySkillsData1 = JSON.parse(localStorage.getItem('category1Skills')) || [];
+    const categorySkillsData2 = JSON.parse(localStorage.getItem('category2Skills')) || [];
+    const categorySkillsData3 = JSON.parse(localStorage.getItem('category3Skills')) || [];
+
+    // Récupère les données du learner sélectionné depuis le localStorage
+    const selectedLearner = JSON.parse(localStorage.getItem('selectedLearner'));
+    console.log("Selected learner:", selectedLearner);
 
     return (
         <div id='FlexDetails'>
             <section id='List'>
-                <div className='REACList'>
-                    <h1 className='REACNumber'>1</h1>
-                    <div className='Line'></div>
-                    <p className='REACName'>Installer et configurer son environnement de travail en fonction du projet</p>
-                    <div className='Line'></div>
-                    <img className='REACIMG' src="./bronze.png" alt="" />
-                </div>
-                <div className='REACList'>
-                    <h1 className='REACNumber'>2</h1>
-                    <div className='Line'></div>
-                    <p className='REACName'>Développer des interfaces utilisateur</p>
-                    <div className='Line'></div>
-                    <img className='REACIMG' src="./bronze.png" alt="" />
-                </div>
-                <div className='REACList'>
-                    <h1 className='REACNumber'>3</h1>
-                    <div className='Line'></div>
-                    <p className='REACName'>Développer des composants métiers</p>
-                    <div className='Line'></div>
-                    <img className='REACIMG' src="./bronze.png" alt="" />
-                </div>
-                <div className='REACList'>
-                    <h1 className='REACNumber'>4</h1>
-                    <div className='Line'></div>
-                    <p className='REACName'>Contribuer à la gestion d’un projet informatique</p>
-                    <div className='Line'></div>
-                    <img className='REACIMG' src="./bronze.png" alt="" />
-                </div>
-                <div className='REACList'>
-                    <h1 className='REACNumber'>5</h1>
-                    <div className='Line'></div>
-                    <p className='REACName'>Analyser les besoins et maquetter une application</p>
-                    <div className='Line'></div>
-                    <img className='REACIMG' src="./gold.png" alt="" />
-                </div>
-                <div className='REACList'>
-                    <h1 className='REACNumber'>6</h1>
-                    <div className='Line'></div>
-                    <p className='REACName'>Définir l’architecture logicielle d’une application</p>
-                    <div className='Line'></div>
-                    <img className='REACIMG' src="./silver.png" alt="" />
-                </div>
-                <div className='REACList'>
-                    <h1 className='REACNumber'>7</h1>
-                    <div className='Line'></div>
-                    <p className='REACName'>Concevoir et mettre en place une base de données relationnelle</p>
-                    <div className='Line'></div>
-                    <img className='REACIMG' src="./silver.png" alt="" />
-                </div>
-                <div className='REACList'>
-                    <h1 className='REACNumber'>8</h1>
-                    <div className='Line'></div>
-                    <p className='REACName'>Développer des composants d’accès aux données SQL et NoSQL</p>
-                    <div className='Line'></div>
-                    <img className='REACIMG' src="./silver.png" alt="" />
-                </div>
-                <div className='REACList'>
-                    <h1 className='REACNumber'>9</h1>
-                    <div className='Line'></div>
-                    <p className='REACName'>Préparer et exécuter les plans de tests d’une application</p>
-                    <div className='Line'></div>
-                    <img className='REACIMG' src="./silver.png" alt="" />
-                </div>
-                <div className='REACList'>
-                    <h1 className='REACNumber'>10</h1>
-                    <div className='Line'></div>
-                    <p className='REACName'>Préparer et documenter le déploiement d’une application</p>
-                    <div className='Line'></div>
-                    <img className='REACIMG' src="./silver.png" alt="" />
-                </div>
-                <div className='REACList'>
-                    <h1 className='REACNumber'>11</h1>
-                    <div className='Line'></div>
-                    <p className='REACName'>Contribuer à la mise en production dans une démarche DevOps</p>
-                    <div className='Line'></div>
-                    <img className='REACIMG' src="./silver.png" alt="" />
-                </div>
+                {/* Affichage des compétences pour la catégorie 1 */}
+                <h2>Catégorie 1</h2>
+                {categorySkillsData1.map((element, index) => (
+                    <div key={`category1-${index}`}>
+                        <p>Compétence {element.id}: {element.rank}</p>
+                    </div>
+                ))}
+
+                {/* Affichage des compétences pour la catégorie 2 */}
+                <h2>Catégorie 2</h2>
+                {categorySkillsData2.map((element, index) => (
+                    <div key={`category2-${index}`}>
+                        <p>Compétence {element.id}: {element.rank}</p>
+                    </div>
+                ))}
+
+                {/* Affichage des compétences pour la catégorie 3 */}
+                <h2>Catégorie 3</h2>
+                {categorySkillsData3.map((element, index) => (
+                    <div key={`category3-${index}`}>
+                        <p>Compétence {element.id}: {element.rank}</p>
+                    </div>
+                ))}
             </section>
+
+            {/* Section pour afficher les détails du learner sélectionné */}
             <section id='Card'>
-            <img className='CardIMG' src={selectedLearner ? selectedLearner.url : "./eric.png"} alt="" />
+                <img className='CardIMG' src={selectedLearner ? selectedLearner.url : "./eric.png"} alt="" />
                 <h1 className='CardName'>{selectedLearner ? selectedLearner.name : 'Nom du Learner'}</h1>
                 <h2 className='CardAge'>{selectedLearner ? selectedLearner.age : 'Âge du Learner'} ans </h2>
                 {/* Utilisez la stack du learner sélectionné pour le p */}
@@ -105,4 +58,4 @@ function Details() {
     );
 }
 
-export default Details
+export default Details;
