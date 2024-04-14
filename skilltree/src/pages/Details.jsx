@@ -16,31 +16,41 @@ function Details() {
     // Récupère les données du learner sélectionné depuis le localStorage
     const selectedLearner = JSON.parse(localStorage.getItem('selectedLearner'));
     console.log("Selected learner:", selectedLearner);
+    const competenceNames = ['Installer et configurer son environnement de travail en fonction du projet', 'Développer des interfaces utilisateur', 'Développer des composants métiers', 'Contribuer à la gestion d’un projet informatique'];
+    const competenceNames2 = [
+        'Analyser les besoins et maquetter une application',
+        'Définir l’architecture logicielle d’une application',
+        'Concevoir et mettre en place une base de données relationnelle',
+        'Développer des composants d’accès aux données SQL et NoSQL'
+    ];
+
+    const competenceNames3 = [
+        'Préparer et exécuter les plans de tests d’une application',
+        'Préparer et documenter le déploiement d’une application',
+        'Contribuer à la mise en production dans une démarche DevOps'
+    ];
 
     return (
         <div id='FlexDetails'>
             <section id='List'>
                 {/* Affichage des compétences pour la catégorie 1 */}
-                <h2>Catégorie 1</h2>
                 {categorySkillsData1.map((element, index) => (
                     <div key={`category1-${index}`}>
-                        <p>Compétence {element.id}: {element.rank}</p>
+                        <p>{competenceNames[index]}: {element.rank}</p>
                     </div>
                 ))}
 
                 {/* Affichage des compétences pour la catégorie 2 */}
-                <h2>Catégorie 2</h2>
                 {categorySkillsData2.map((element, index) => (
                     <div key={`category2-${index}`}>
-                        <p>Compétence {element.id}: {element.rank}</p>
+                        <p>{competenceNames2[index]}: {element.rank}</p>
                     </div>
                 ))}
 
                 {/* Affichage des compétences pour la catégorie 3 */}
-                <h2>Catégorie 3</h2>
                 {categorySkillsData3.map((element, index) => (
                     <div key={`category3-${index}`}>
-                        <p>Compétence {element.id}: {element.rank}</p>
+                        <p>{competenceNames3[index]}: {element.rank}</p>
                     </div>
                 ))}
             </section>
