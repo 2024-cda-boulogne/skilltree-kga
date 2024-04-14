@@ -13,6 +13,7 @@ function Home() {
   const [category1Skills, setCategory1Skills] = useState(null); // Ajout de l'état pour les compétences de la catégorie 1
   const [category2Skills, setCategory2Skills] = useState([]);
   const [category3Skills, setCategory3Skills] = useState([]);
+  const [selectedLearner, setSelectedLearner] = useState(null);
 
 
   useEffect(() => {
@@ -45,43 +46,23 @@ function Home() {
   
       const skillIds = fetchedData.map(obtainItem => obtainItem.id_skills);
   
-      // Récupérer les compétences de la catégorie 1 dans la table "Skills" avec leur rank
-      const category1SkillsResponse = await supabase
-        .from('Skills')
-        .select('id, rank')
-        .eq('category', '1');
-      const category1SkillsData = category1SkillsResponse.data;
-  
-      const category1Skills = category1SkillsData.map(skillItem => ({
-        id: skillItem.id,
-        rank: skillItem.rank
-      }));
-  
-      // Récupérer les compétences de la catégorie 2 dans la table "Skills" avec leur rank
-      const category2SkillsResponse = await supabase
-        .from('Skills')
-        .select('id, rank')
-        .eq('category', '2');
-      const category2SkillsData = category2SkillsResponse.data;
-  
-      const category2Skills = category2SkillsData.map(skillItem => ({
-        id: skillItem.id,
-        rank: skillItem.rank
-      }));
-  
-      // Récupérer les compétences de la catégorie 3 dans la table "Skills" avec leur rank
-      const category3SkillsResponse = await supabase
-        .from('Skills')
-        .select('id, rank')
-        .eq('category', '3');
-      const category3SkillsData = category3SkillsResponse.data;
-  
-      const category3Skills = category3SkillsData.map(skillItem => ({
-        id: skillItem.id,
-        rank: skillItem.rank
-      }));
-  
+      // Récupérer les compétences de chaque catégorie dans la table "Skills" avec leur rank
+      const categoriesSkills = await Promise.all([
+        supabase.from('Skills').select('id, rank').eq('category', '1').in('id', skillIds),
+        supabase.from('Skills').select('id, rank').eq('category', '2').in('id', skillIds),
+        supabase.from('Skills').select('id, rank').eq('category', '3').in('id', skillIds),
+      ]);
+      
       // Mettre à jour les états d'état avec les données filtrées
+      const categorySkills = categoriesSkills.map(categorySkillsResponse => {
+        return categorySkillsResponse.data.map(skillItem => ({
+          id: skillItem.id,
+          rank: skillItem.rank
+        }));
+      });
+  
+      const [category1Skills, category2Skills, category3Skills] = categorySkills;
+  
       setCategory1Skills(category1Skills);
       setCategory2Skills(category2Skills);
       setCategory3Skills(category3Skills);
@@ -90,25 +71,30 @@ function Home() {
         category1Skills.some(skill => skill.id === item.id_skills)
       );
       setFilteredDataCategory1(filteredDataCategory1);
-      console.log("Filtered Data Category 1:", filteredDataCategory1);
   
       const filteredDataCategory2 = fetchedData.filter(item =>
         category2Skills.some(skill => skill.id === item.id_skills)
       );
       setFilteredDataCategory2(filteredDataCategory2);
-      console.log("Filtered Data Category 2:", filteredDataCategory2);
   
       const filteredDataCategory3 = fetchedData.filter(item =>
         category3Skills.some(skill => skill.id === item.id_skills)
       );
       setFilteredDataCategory3(filteredDataCategory3);
-      console.log("Filtered Data Category 3:", filteredDataCategory3);
+  
+      // Stocker les données sélectionnées dans le local storage
+      localStorage.setItem('fetchedData', JSON.stringify(fetchedData));
+      localStorage.setItem('filteredDataCategory1', JSON.stringify(filteredDataCategory1));
+      localStorage.setItem('filteredDataCategory2', JSON.stringify(filteredDataCategory2));
+      localStorage.setItem('filteredDataCategory3', JSON.stringify(filteredDataCategory3));
+      localStorage.setItem('category1Skills', JSON.stringify(category1Skills));
+      localStorage.setItem('category2Skills', JSON.stringify(category2Skills));
+      localStorage.setItem('category3Skills', JSON.stringify(category3Skills));
+  
     } catch (error) {
       console.error("Error fetching data from 'obtain' table:", error.message);
     }
   };
-  
-
   const musicUrls = [
     'Simon.mp3',
     'Cédric.mp3',
@@ -136,15 +122,23 @@ function Home() {
     if (index !== -1) {
       const learnerId = data[index].id;
       console.log("Learner ID:", learnerId);
+      setSelectedLearner(data[index]);
   
       if (selectedDivIndex !== index) {
         console.log("New div clicked, updating selected data.");
         setSelectedDivIndex(index);
+        setSelectedLearner(data[index]); // Mettre à jour les données sélectionnées
         await fetchDataObtain(learnerId);
+      
+        // Stocker les données sélectionnées dans le local storage
+        localStorage.setItem('selectedLearner', JSON.stringify(data[index]));
       } else {
         console.log("Same div clicked again, resetting selected data and index.");
         setSelectedDivIndex(null);
-        setSelectedData(null);
+        setSelectedLearner(null); // Réinitialiser les données sélectionnées
+      
+        // Supprimer les données du local storage lorsqu'elles sont réinitialisées
+        localStorage.removeItem('selectedLearner');
       }
     }
   };
@@ -253,7 +247,7 @@ function Home() {
           <p className='text-white'>NOM</p>
         </div>
         <div className='more-window'>
-          <a className='text-yellow' href="/Details">VOIR +</a>
+        <a className='text-yellow' href="/Details" state={{ selectedLearner }}>VOIR +</a>
         </div>
       </div>
     </div>
