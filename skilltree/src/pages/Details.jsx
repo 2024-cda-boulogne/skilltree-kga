@@ -16,7 +16,11 @@ function Details() {
     // Récupère les données du learner sélectionné depuis le localStorage
     const selectedLearner = JSON.parse(localStorage.getItem('selectedLearner'));
     console.log("Selected learner:", selectedLearner);
-    const competenceNames = ['Installer et configurer son environnement de travail en fonction du projet', 'Développer des interfaces utilisateur', 'Développer des composants métiers', 'Contribuer à la gestion d’un projet informatique'];
+    const competenceNames = [
+        'Installer et configurer son environnement de travail en fonction du projet',
+        'Développer des interfaces utilisateur',
+        'Développer des composants métiers',
+        'Contribuer à la gestion d’un projet informatique'];
     const competenceNames2 = [
         'Analyser les besoins et maquetter une application',
         'Définir l’architecture logicielle d’une application',
@@ -35,22 +39,28 @@ function Details() {
             <section id='List'>
                 {/* Affichage des compétences pour la catégorie 1 */}
                 {categorySkillsData1.map((element, index) => (
-                    <div key={`category1-${index}`}>
-                        <p>{competenceNames[index]}: {element.rank}</p>
+                    <div key={`category1-${index}`} className='REACList'>
+                        <p>{competenceNames[index]}</p>
+                        <div className='Line'></div>
+                         {element.rank}
                     </div>
                 ))}
 
                 {/* Affichage des compétences pour la catégorie 2 */}
                 {categorySkillsData2.map((element, index) => (
-                    <div key={`category2-${index}`}>
-                        <p>{competenceNames2[index]}: {element.rank}</p>
+                    <div key={`category2-${index}`}className='REACList'>
+                        <p>{competenceNames2[index]}</p>
+                        <div className='Line'></div>
+                         {element.rank}
                     </div>
                 ))}
 
                 {/* Affichage des compétences pour la catégorie 3 */}
                 {categorySkillsData3.map((element, index) => (
-                    <div key={`category3-${index}`}>
-                        <p>{competenceNames3[index]}: {element.rank}</p>
+                    <div key={`category3-${index}`}className='REACList'>
+                        <p>{competenceNames3[index]}</p>
+                        <div className='Line'></div>
+                         {element.rank}
                     </div>
                 ))}
             </section>
