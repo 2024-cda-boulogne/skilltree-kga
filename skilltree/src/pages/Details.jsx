@@ -37,42 +37,61 @@ function Details() {
     return (
         <div id='FlexDetails'>
             <section id='List'>
-                {/* Affichage des compétences pour la catégorie 1 */}
-                {categorySkillsData1.map((element, index) => (
-                    <div key={`category1-${index}`} className='REACList'>
-                        <p>{competenceNames[index]}</p>
-                        <div className='Line'></div>
-                         {element.rank}
-                    </div>
-                ))}
-
-                {/* Affichage des compétences pour la catégorie 2 */}
-                {categorySkillsData2.map((element, index) => (
-                    <div key={`category2-${index}`}className='REACList'>
-                        <p>{competenceNames2[index]}</p>
-                        <div className='Line'></div>
-                         {element.rank}
-                    </div>
-                ))}
-
-                {/* Affichage des compétences pour la catégorie 3 */}
-                {categorySkillsData3.map((element, index) => (
-                    <div key={`category3-${index}`}className='REACList'>
-                        <p>{competenceNames3[index]}</p>
-                        <div className='Line'></div>
-                         {element.rank}
-                    </div>
-                ))}
+            {categorySkillsData1.map((element, index) => (
+                <div key={`category1-${index}`} className='REACList'>
+                    <p className='REACName'>{competenceNames[index]}</p>
+                    <div className='Line'></div>
+                    {element.rank === 1 ? (
+                        <img className='REACIMG' src="./bronze.png" alt="Niveau 1" />
+                    ) : element.rank === 2 ? (
+                        <img className='REACIMG' src="./silver.png" alt="Niveau 2" />
+                    ) : element.rank === 3 ? (
+                        <img className='REACIMG' src="./gold.png" alt="Niveau 3" />
+                    ) : (
+                        <span>{element.rank}</span>
+                    )}
+                </div>
+            ))}
+            {categorySkillsData2.map((element, index) => (
+                <div key={`category2-${index}`}className='REACList'>
+                    <p className='REACName'>{competenceNames2[index]}</p>
+                    <div className='Line'></div>
+                    {element.rank === 1 ? (
+                        <img className='REACIMG' src="./bronze.png" alt="Niveau 1" />
+                    ) : element.rank === 2 ? (
+                        <img className='REACIMG' src="./silver.png" alt="Niveau 2" />
+                    ) : element.rank === 3 ? (
+                        <img className='REACIMG' src="./gold.png" alt="Niveau 3" />
+                    ) : (
+                        <span>{element.rank}</span>
+                    )}
+                </div>
+            ))}
+            {categorySkillsData3.map((element, index) => (
+                <div key={`category3-${index}`}className='REACList'>
+                    <p className='REACName'>{competenceNames3[index]}</p>
+                    <div className='Line'></div>
+                    {element.rank === 1 ? (
+                        <img className='REACIMG' src="./bronze.png" alt="Niveau 1" />
+                    ) : element.rank === 2 ? (
+                        <img className='REACIMG' src="./silver.png" alt="Niveau 2" />
+                    ) : element.rank === 3 ? (
+                        <img className='REACIMG' src="./gold.png" alt="Niveau 3" />
+                    ) : (
+                        <span>{element.rank}</span>
+                    )}
+                </div>
+            ))}
             </section>
 
             {/* Section pour afficher les détails du learner sélectionné */}
             <section id='Card'>
                 <img className='CardIMG' src={selectedLearner ? selectedLearner.url : "./eric.png"} alt="" />
-                <h1 className='CardName'>{selectedLearner ? selectedLearner.name : 'Nom du Learner'}</h1>
+                <h1 className='CardName'>{selectedLearner ? selectedLearner.name : 'Nom du Learner'} {selectedLearner ? selectedLearner.surname : 'Nom du Learner'}</h1>
                 <h2 className='CardAge'>{selectedLearner ? selectedLearner.age : 'Âge du Learner'} ans </h2>
                 {/* Utilisez la stack du learner sélectionné pour le p */}
                 <p className='CardStacks'>{selectedLearner ? `Stacks : ${selectedLearner.stacks}` : 'Stacks du Learner'}</p>
-                <p>{selectedLearner ? selectedLearner.quote : 'Le back c’est d’la merde, le front c’est bien'}</p>
+                <p>"{selectedLearner ? selectedLearner.quote : 'Le back c’est d’la merde, le front c’est bien'}"</p>
             </section>
         </div>
     );
