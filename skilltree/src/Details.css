@@ -29,7 +29,7 @@ body{
     max-width: 39vw;
     padding-left: 1vw;
     text-align: start;
-    font-size: 1.5vw;
+    font-size: 1.1vw;
 }
 
 .Line{
@@ -87,10 +87,6 @@ audio{
 }
 
 @media screen and (max-width: 847px) {
-    
-    p {
-      font-size: 0%;
-    }
 
     #Card{
         height: 50vh;

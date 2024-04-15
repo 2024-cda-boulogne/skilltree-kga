@@ -53,11 +53,6 @@
     justify-content: center;
   }
 
-  .photomg {
-    height: 150px;
-    width: 150px;
-  }
-
 }
 
 @media screen and (max-width: 640px) {
