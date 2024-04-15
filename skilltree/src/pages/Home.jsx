@@ -115,17 +115,13 @@ function Home() {
   };
 
   const toggleAudio = async (id) => {
-    console.log("Toggle audio function called with ID:", id);
     const index = findIndexById(id);
-    console.log("Index of the clicked div:", index);
   
     if (index !== -1) {
       const learnerId = data[index].id;
-      console.log("Learner ID:", learnerId);
       setSelectedLearner(data[index]);
   
       if (selectedDivIndex !== index) {
-        console.log("New div clicked, updating selected data.");
         setSelectedDivIndex(index);
         setSelectedLearner(data[index]); // Mettre à jour les données sélectionnées
         await fetchDataObtain(learnerId);
@@ -133,7 +129,6 @@ function Home() {
         // Stocker les données sélectionnées dans le local storage
         localStorage.setItem('selectedLearner', JSON.stringify(data[index]));
       } else {
-        console.log("Same div clicked again, resetting selected data and index.");
         setSelectedDivIndex(null);
         setSelectedLearner(null); // Réinitialiser les données sélectionnées
       

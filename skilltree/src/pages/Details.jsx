@@ -15,7 +15,6 @@ function Details() {
 
     // Récupère les données du learner sélectionné depuis le localStorage
     const selectedLearner = JSON.parse(localStorage.getItem('selectedLearner'));
-    console.log("Selected learner:", selectedLearner);
     const competenceNames = [
         'Installer et configurer son environnement de travail en fonction du projet',
         'Développer des interfaces utilisateur',
