@@ -239,7 +239,7 @@ function Home() {
           </div>
         </div>
         <div className='name-window'>
-          <p className='text-white'>NOM</p>
+          <p className='text-white'>{selectedLearner && selectedLearner.name}</p>
         </div>
         <div className='more-window'>
         <a className='text-yellow' href="/Details" state={{ selectedLearner }}>VOIR +</a>
