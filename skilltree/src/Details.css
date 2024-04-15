@@ -1,59 +1,64 @@
-body{
-    background-color: black;
-    color: white;
+body {
+  background-color: black;
+  color: white;
 }
-audio{
-    display: none;
+.REACList {
+  background-color: rgba(240, 255, 255, 0.763);
+  color: black;
+}
+#Card {
+  background-color: rgba(240, 255, 255, 0.763);
+  color: black;
+}
+audio {
+  display: none;
 }
 @media screen and (max-width: 1000px) {
-    
-    #Card{
-        display: flex;
-        flex-direction: column;
-        border-radius: 50px;
-        border: #C0C0C0 2px solid;
-        width: 90vw;
-        /* height: 85%; */
-        margin-left: 5vw;
-        margin-top: 5vh;
-        text-align: center;
-    }
-    #FlexDetails{
-        display: flex;
-        flex-direction: column-reverse ;
-        gap: 5vh;
-    }
-    #List{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 2vh;
-        width: 90%;
-    }
-    .REACList{
-        display: flex;
-        margin-left: 5vh;
-        flex-direction: column;
-        text-align: center;
-        width: 90vw;
-        align-items: center;
-        border-radius: 6px;
-        border: #C0C0C0 2px solid;
-    }
-    /* p {
+  #Card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 50px;
+    border: #c0c0c0 2px solid;
+    width: 90vw;
+    /* height: 85%; */
+    margin-left: 5vw;
+    margin-top: 5vh;
+    text-align: center;
+  }
+  #FlexDetails {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 5vh;
+  }
+  #List {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2vh;
+    width: 90%;
+  }
+  .REACList {
+    display: flex;
+    margin-left: 5vh;
+    flex-direction: column;
+    text-align: center;
+    width: 90vw;
+    align-items: center;
+    border-radius: 6px;
+    border: #c0c0c0 2px solid;
+  }
+  /* p {
       font-size: 0%;
     }
 
     #Card{
         height: 50vh;
     } */
-    
-  }
+}
 
 @media screen and (max-width: 768px) {
-
-    /* #List {
+  /* #List {
         display: flex;
         flex-direction: column;
         gap: 1vh;
@@ -107,81 +112,76 @@ audio{
         padding-top: 5vh;
         justify-content: center;
     } */
-    
-    
-  }
-
-@media screen and (min-width: 1000px) {
-    
-    #List{
-        display: flex;
-        flex-direction: column;
-        gap: 1vh;
-    }
-
-    .REACList{
-        display: flex;
-        width: 50vw;
-        height: 10%;
-        align-items: center;
-        border-radius: 6px;
-        border: #C0C0C0 2px solid;
-    }
-
-    .REACName {
-        width: 90%;
-        padding-left: 1vw;
-        text-align: start;
-        font-size: 1vw;
-
-    }
-    .Line{
-        border: #C0C0C0 1px solid;
-        height: 100%;
-    }
-    .REACIMG{
-        height: 3.5vh;
-        padding-left: 1.66vw;
-    }
-
-    #FlexDetails{
-        display: flex;
-        flex-direction: row;
-        gap: 5vw;
-        padding-top: 5vh;
-        justify-content: center;
-        height: 70vh;
-    }
-
-    #Card{
-        display: flex;
-        flex-direction: column;
-        border-radius: 50px;
-        border: #C0C0C0 2px solid;
-        width: 25vw;
-        height: 100%;
-        text-align: center;
-    }
-
-    .CardIMG{
-        height: 25vh;
-        width: 25vh;
-        border-radius: 50%;
-        object-position: 50% 50%;
-        margin-left: auto;
-        margin-top: 2vh;
-        object-fit: cover;
-        margin-right: auto;
-    }
-
-    .image-bordure:hover{
-        transform:  rotate(360deg);
-        transition: 5s;
-        z-index: 10;
-    }
-
-    .photo{
-        z-index: -10;
-    }
 }
 
+@media screen and (min-width: 1000px) {
+  #List {
+    display: flex;
+    flex-direction: column;
+    gap: 1vh;
+  }
+
+  .REACList {
+    display: flex;
+    width: 50vw;
+    height: 10%;
+    align-items: center;
+    border-radius: 6px;
+    border: #c0c0c0 2px solid;
+  }
+
+  .REACName {
+    width: 90%;
+    padding-left: 1vw;
+    text-align: start;
+    font-size: 1vw;
+  }
+  .Line {
+    border: #c0c0c0 1px solid;
+    height: 100%;
+  }
+  .REACIMG {
+    height: 3.5vh;
+    padding-left: 1.66vw;
+  }
+
+  #FlexDetails {
+    display: flex;
+    flex-direction: row;
+    gap: 5vw;
+    padding-top: 5vh;
+    justify-content: center;
+    height: 70vh;
+  }
+
+  #Card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 50px;
+    border: #c0c0c0 2px solid;
+    width: 25vw;
+    height: 100%;
+    text-align: center;
+  }
+
+  .CardIMG {
+    height: 25vh;
+    width: 25vh;
+    border-radius: 50%;
+    object-position: 50% 50%;
+    margin-left: auto;
+    margin-top: 2vh;
+    object-fit: cover;
+    margin-right: auto;
+  }
+
+  .image-bordure:hover {
+    transform: rotate(360deg);
+    transition: 5s;
+    z-index: 10;
+  }
+
+  .photo {
+    z-index: -10;
+  }
+}

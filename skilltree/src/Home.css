@@ -7,7 +7,12 @@ body {
   font-size: 2rem;
   font-family: "New Rodin", sans-serif;
 }
-
+.skill-window div {
+  display: flex;
+  height: 15%;
+  justify-content: center;
+  align-items: center;
+}
 @media screen and (max-width: 1000px) {
   .showskill-window {
     display: none;
@@ -17,14 +22,12 @@ body {
     flex-direction: row;
     gap: 10px;
   }
-  audio{
+  audio {
     display: none;
   }
 }
 
-
 @media screen and (min-width: 1000px) {
-
   .text-white {
     color: white;
   }
